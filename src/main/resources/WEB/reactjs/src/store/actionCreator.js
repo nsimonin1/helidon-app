@@ -7,6 +7,13 @@ export const addDossier = dossier => {
   }
 }
 
+export const removeDossier = id => {
+  return {
+    type: actionTypes.REMOVE_DOSSIER,
+    id,
+  }
+}
+
 export const simulateHttpRequest = dossier => {
   return dispatch => {
     setTimeout(() => {

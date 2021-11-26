@@ -3,18 +3,18 @@ import { connect } from "react-redux"
 
 import Dossier from '../components/Dossier/Dossier'
 import AddDossier from '../components/AddDossier/AddDossier'
-import { simulateHttpRequest } from '../store/actionCreator'
+import { removeDossier, simulateHttpRequest } from '../store/actionCreator'
 
 
 
-const Dossiers = ({ dossiers, saveDossier }) => { 
+const Dossiers = ({ dossiers, saveDossier, removeDossier }) => { 
 
 
   return (
     <div>
       <AddDossier saveDossier={saveDossier} />
       {dossiers.map(dossier => (
-        <Dossier key={dossier.id} dossier={dossier} />
+        <Dossier key={dossier.id} dossier={dossier} removeDossier={removeDossier} />
       ))}
     </div>
   )
@@ -29,6 +29,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     saveDossier: dossier => dispatch(simulateHttpRequest(dossier)),
+    removeDossier: id => dispatch(removeDossier(id)),
   }
 }
 

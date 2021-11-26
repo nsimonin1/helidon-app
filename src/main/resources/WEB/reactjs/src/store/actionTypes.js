@@ -1,2 +1,3 @@
 
 export const ADD_DOSSIER = 'ADD_DOSSIER'
+export const REMOVE_DOSSIER = 'REMOVE_DOSSIER'

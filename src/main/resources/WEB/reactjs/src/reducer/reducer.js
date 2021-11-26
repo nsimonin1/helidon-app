@@ -18,7 +18,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         dossiers: state.dossiers.concat(newDossier),
-      }  
+      } 
+    case actionTypes.REMOVE_DOSSIER:
+      return {
+        ...state,
+        dossiers: state.dossiers.filter(item => item.id !== action.id)
+      }
     default:
       return state;
   }  
