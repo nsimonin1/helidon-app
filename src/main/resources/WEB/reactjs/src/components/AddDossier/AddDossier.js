@@ -12,9 +12,7 @@ const AddDossier = ({ saveDossier }) => {
   }
 
   const addNewDossier = e => {
-    e.preventDefault()   
-    dossier.id = Math.floor(Math.random() * 11)
-    setDossier(dossier)
+    e.preventDefault() 
     saveDossier(dossier)
   }
 

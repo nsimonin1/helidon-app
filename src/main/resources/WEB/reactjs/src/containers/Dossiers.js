@@ -1,19 +1,14 @@
-import React, { useState } from "react"
+import React from "react"
+import { connect } from "react-redux"
+
 import Dossier from '../components/Dossier/Dossier'
 import AddDossier from '../components/AddDossier/AddDossier'
+import { simulateHttpRequest } from '../store/actionCreator'
 
 
-const Dossiers = () => {
-  const [dossiers, setDossiers] = useState([
-    {id: 1, title: 'post 1', body: 'Quisque cursus, metus vitae pharetra'},
-    {id: 2, title: 'post 2', body: 'Quisque cursus, metus vitae pharetra'},
-  ])
 
-  const saveDossier = e => {
-    //e.preventDefault()
-    setDossiers([...dossiers, e])
+const Dossiers = ({ dossiers, saveDossier }) => { 
 
-  }
 
   return (
     <div>
@@ -25,4 +20,16 @@ const Dossiers = () => {
   )
 }
 
-export default Dossiers
+const mapStateToProps = state => {
+  return {
+    dossiers: state.dossiers,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    saveDossier: dossier => dispatch(simulateHttpRequest(dossier)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dossiers)
